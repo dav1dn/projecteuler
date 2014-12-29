@@ -9,7 +9,7 @@ def is_palindrome(n):
     return str(n) == str(n)[::-1]
 
 def three_digit_multiples_of_11():
-    lst = [11*n for n in range(1,100)]
+    lst = [11*n for n in range(10,100)]
     return [n for n in lst if len(str(n)) == 3]
 
 def solution():
@@ -19,12 +19,13 @@ def solution():
     # This is pretty inefficient...
     largest_palindrome = 1
 
-    for x in three_digit_multiples_of_11():
-        for y in list(range(100,999)):
+    for x in three_digit_multiples_of_11()[::-1]:
+        for y in list(range(100,999))[::-1]:
             product = x * y
-            if is_palindrome(product) and product > largest_palindrome:
+            if product < largest_palindrome: # because we count down, break out of y loop if no more valid sol
+                break
+            elif is_palindrome(product) and product > largest_palindrome:
                 largest_palindrome = product
-
     return largest_palindrome
     
 
