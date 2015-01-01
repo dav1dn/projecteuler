@@ -15,6 +15,7 @@ def solution(n):
                 break
             if i ** 2 + j ** 2 == k ** 2:
                 return i * j * k
+
 if __name__ == '__main__':
     now = time.time()
     sol = solution(1000)
